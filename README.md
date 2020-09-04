@@ -1,4 +1,5 @@
-#RansomPy COVID-19
+RansomPy COVID-19
+
 Ransowmare based on Python 3 You can find the source of the base code in the directory of : https://github.com/pycodehacker/pysome
 
 This version is improved and I decided to add specific directories to encrypt. As well as adding a custom wallpaper
@@ -6,6 +7,7 @@ This version is improved and I decided to add specific directories to encrypt. A
 The code is constantly improving, this for educational purposes to learn how a Ransomware works. I am in no way responsible for what you will do with this code.
 
 #Program Operation
+
 The code is buildable in several stages but is essentially intended to encrypt the files in a Windows system and is compiled with Cx_Freeze which allows to import all the Ransomware libraries.
 
 Using Cx_Freeze is relatively simple, you can consult the official documentation at this address: https://cx-freeze.readthedocs.io/en/latest/
@@ -13,9 +15,11 @@ Using Cx_Freeze is relatively simple, you can consult the official documentation
 You can also execute the code without compiling it, it will be necessary that the target has Python installed on the system, however it is better to compile it for automation after creating an SFX package with Winrar.
 
 #Details
+
 Ransomware does not attack system files, it only encrypts home directories and the directory containing all of the installed programs.
 
-Auto-exec with WinRAR
+#Auto-exec with WinRAR
+
 Select the folder contains the code and libraries
 Rename the folder to "setup"
 Right Click and "Add to archive"
