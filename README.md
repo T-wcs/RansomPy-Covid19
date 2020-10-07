@@ -37,4 +37,4 @@ Ransomware does not attack system files, it only encrypts home directories and t
 The advantage of this method of building an archive is that I do not need to request privileges in the code and it also makes it possible to contain all the libraries in a single executable file.
 
 # Server Exec
-For use the script : python Ransome_server.py <ip_adress> <port>
+For use the script : python Ransome_server.py <ip_adress> <port_number>
