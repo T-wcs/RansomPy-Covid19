@@ -1,9 +1,5 @@
 # RansomPy COVID-19
 Ransowmare based on Python 3
-You can find the source of the base code in the directory of : 
-https://github.com/pycodehacker/pysome
-
-This version is improved and I decided to add specific directories to encrypt. As well as adding a custom wallpaper
 
 The code is constantly improving, this for educational purposes to learn how a Ransomware works.
 I am in no way responsible for what you will do with this code.
