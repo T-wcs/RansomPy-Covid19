@@ -1,2 +1,4 @@
 cryptography
 wget
+threaded
+fernet
