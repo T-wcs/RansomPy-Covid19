@@ -39,7 +39,11 @@ For use the script : python Ransome_server.py --host <ip_adress> --port <port_nu
 
 # Improvements to come
 The program uses external malware that will open a backdoor.
+
 The program will send the encryption key by e-mail if it cannot reach the exchange server.
+
 The program will encrypt the removable media connected to the target machine.
+
 The program will encrypt much faster with the use of threads.
+
 The program will be able to search and exploit a network communication to propagate itself.
