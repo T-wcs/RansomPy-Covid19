@@ -41,6 +41,7 @@ For use the script : python Ransome_server.py --host <ip_adress> --port <port_nu
 # Improvements to come
 The program uses external malware that will open a backdoor.
 
+The gui counter is started at the launch of windows
 
 The program will encrypt the removable media connected to the target machine.
 
