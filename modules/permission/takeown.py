@@ -15,7 +15,7 @@ def tkOwn_process():
 def tkOwn_regexp():
     procs = ['regedit.exe', 'explorer.exe']
     for proc in procs:
-        tkd = "\\windows\\system32\\takowon.exe /F \\Windows\\%s" %(proc)
+        tkd = "\\windows\\system32\\takeown.exe /F \\Windows\\%s" %(proc)
         os.system(tkd)
 # Function to get own the wallpaper directory
 def tkOwn_DirWallpaper():
