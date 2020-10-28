@@ -1,4 +1,0 @@
-cryptography
-wget
-thread
-fernet
