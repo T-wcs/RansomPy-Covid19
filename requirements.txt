@@ -1,0 +1,6 @@
+cryptography
+wget
+thread
+fernet
+winreg
+pillow
