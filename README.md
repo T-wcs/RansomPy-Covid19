@@ -35,8 +35,8 @@ If the program not connect on the server for obtains the key of encrypt the file
 
 The advantage of this method of building an archive is that I do not need to request privileges in the code and it also makes it possible to contain all the libraries in a single executable file.
 
-# Execution script on the Server (Linux Only with Python 2.7)
-For use the script : python Ransome_server.py --host <ip_adress> --port <port_number>
+# Execution script on the Server (Linux Only)
+For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
 
 # Improvements to come
 The program uses external malware that will open a backdoor.
