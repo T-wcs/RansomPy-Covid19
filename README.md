@@ -1,5 +1,5 @@
 # RansomPy COVID-19
-Ransowmare based on Python 3 created during containment...
+Ransowmare based on Python 3 [3.7 version] created during containment...
 
 The code is constantly improving, this for educational purposes to learn how a Ransomware works.
 I am in no way responsible for what you will do with this code.
