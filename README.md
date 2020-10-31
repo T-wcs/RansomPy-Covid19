@@ -39,7 +39,7 @@ The advantage of this method of building an archive is that I do not need to req
 For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
 
 # Improvements to come
-The program uses external malware that will open a backdoor.
+The program uses external malware that will open a backdoor or a reverse shell
 
 The program will encrypt the removable media connected to the target machine.
 
