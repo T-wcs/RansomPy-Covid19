@@ -44,15 +44,6 @@ if(get_admin_rights.is_admin()):
         killproc.exp()
 else:
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv[1:]), None, 1)
-
-# This function is not functionnaly
-path = os.getcwd()
-try:
-    rkey = "%s\\%s.key" %(path, usr)
-    os.remove(rkey)
-except:
-    pass
-
 # Run the GUI Counter
 gcount = "\\PerfLogs\\gui_counter\\gui_counter.exe"
 os.system(gcount)
