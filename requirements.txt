@@ -4,3 +4,4 @@ thread
 fernet
 winreg
 pillow
+tkinter
