@@ -1,31 +1,39 @@
 #!/usr/bin/python
 #coding:utf-8
 import os, sys
-# Function to get own process on windows
-def process():
-    proc = ['smartscreen.exe', 'taskmgr.exe', 'cmd.exe']
-    for procs in proc:
-        tkd = "START /MIN \\windows\\system32\\takeown.exe /F \\Windows\\System32\\%s" %(procs)
-        os.system(tkd)
-    pwr_sh = ['powershell.exe', 'powershell_ise.exe']
-    for procs in pwr_sh:
-        tkd = "START /MIN \\windows\\system32\\takeown.exe /F \\Windows\\System32\\WindowsPowerShell\\v1.0\\%s" %(procs)
-        os.system(tkd)
-# Function to get own regedit and explorer on windows
-def exp():
-    tkd = "START /MIN \\windows\\system32\\takeown.exe /F \\Windows\\explorer.exe"
-    os.system(tkd)
-# Function to get own the directory destination and contains
-def perf():
-    tkd = "START /MIN \\windows\\system32\\takeown.exe /F \\PerfLogs /R"
-    os.system(tkd)
-# Function to get own the gui_counter directory recursively
-def perfall():
-    tkb = "\\windows\\system32\\takeown.exe /F \\PerfLogs\\gui_counter /R"
-    os.system(tkb)
-    tkd = "\\windows\\system32\\takeown.exe /F \\PerfLogs\\gui_counter\\* /R"
-    os.system(tkd)
-# Function to get own system directory
-def sysDir():
-    tks = '\\windows\\system32\\takeown.exe /F \\Windows\\System /R /D O'
-    os.system(tks)
+# Get the current letter for System
+letter_drive_path = os.environ["SystemDrive"]
+
+class GetOwn():
+    """ Classe définissant les processus et répertoire à s'approprier """
+    def __init__(self):
+        self.processus_windir = ["explorer.exe", "notepad.exe"]
+        self.processus_pshell = ["powershell.exe", "powershell_ise.exe"]
+        self.processus_sysdir = ["taskmgr.exe", "cmd.exe", "smartscreen.exe"]
+        self.directory_check  = ['{} \\PerfLogs {}', '{} \\PerfLogs\\gui_counter {}', '{} \\PerfLogs\\gui_counter\\* {}']
+        self.processus_exec   = "START /MIN {}\\Windows\\System32\\takeown.exe /F".format(letter_drive_path)
+        self.syntax_option    = "/R"
+        self.directory3       = "{}\\Windows\\System32\\WindowsPowerShell\\v1.0\\".format(letter_drive_path)
+        self.directory2       = "{}\\Windows\\System32\\".format(letter_drive_path)
+        self.directory        = "{}\\Windows\\".format(letter_drive_path)
+    # Function to get own explorer.exe on windows
+    def proc(self):
+        for x in self.processus_windir:
+            self.processus_windir = x
+            self.command_execute  = "{} {}{}".format(self.processus_exec, self.directory, x)
+            os.system(self.command_execute)
+
+        for x in self.processus_sysdir:
+            self.processus_sysdir = x
+            self.command_execute  = "{} {}{}".format(self.processus_exec, self.directory2, x)
+            os.system(self.command_execute)
+
+        for x in self.processus_pshell:
+            self.processus_pshell = x
+            self.command_execute  = "{} {}{}".format(self.processus_exec, self.directory3, x)
+            os.system(self.command_execute)
+    # Function to get own the directory destination and contains
+    def dir(self):
+        for x in self.directory_check:
+            self.command_execute = x.format(self.processus_exec, self.syntax_option)
+            os.system(self.command_execute)
