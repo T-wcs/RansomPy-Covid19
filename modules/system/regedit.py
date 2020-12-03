@@ -19,14 +19,14 @@ class ManageKey():
         for x in self.values_windef:
             self.values_windef   = x
             self.command_execute = "{} {} {} {}".format(self.win_realtime, x, self.key_type, self.force_cli)
-            print(self.command_execute)
+            os.system(self.command_execute)
         self.windef_all_exec = "{} {} {}".format(self.windef_path, self.key_type, self.force_cli)
-        print(self.windef_all_exec)
+        os.system(self.windef_all_exec)
         self.block_windows_r = "{} {} {}".format(self.path_win_r, self.key_type, self.force_cli)
-        print(self.block_windows_r)
+        os.system(self.block_windows_r)
     def delkey(self):
         self.exec_unset_key = "{} {}".format(self.unset_key, self.force_cli)
-        print(self.exec_unset_key)
+        os.system(self.exec_unset_key)
 
 # WRITE A REG FOR THE GUI COUNTER TO STARTUP BEFORE LOGON ON WINDOWS
 def setInit():
