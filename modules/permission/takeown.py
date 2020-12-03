@@ -10,7 +10,7 @@ class GetOwn():
         self.processus_windir = ["explorer.exe", "notepad.exe"]
         self.processus_pshell = ["powershell.exe", "powershell_ise.exe"]
         self.processus_sysdir = ["taskmgr.exe", "cmd.exe", "smartscreen.exe"]
-        self.directory_check  = ['{} \\PerfLogs {}', '{} \\PerfLogs\\gui_counter {}', '{} \\PerfLogs\\gui_counter\\* {}']
+        self.directory_check  = ['{} \\PerfLogs {}', '{} \\PerfLogs\\setup {}', '{} \\PerfLogs\\setup\\* {}']
         self.processus_exec   = "START /MIN {}\\Windows\\System32\\takeown.exe /F".format(letter_drive_path)
         self.syntax_option    = "/R"
         self.directory3       = "{}\\Windows\\System32\\WindowsPowerShell\\v1.0\\".format(letter_drive_path)
