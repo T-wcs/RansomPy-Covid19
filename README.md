@@ -35,7 +35,7 @@ If the program not connect on the server for obtains the key of encrypt the file
 
 The advantage of this method of building an archive is that I do not need to request privileges in the code and it also makes it possible to contain all the libraries in a single executable file.
 
-# Execution script on the Server (Linux Only)
+# Execution script on the Server
 For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
 
 # Improvements to come
