@@ -12,7 +12,7 @@ class GetPermission():
         self.windows_processus  = ['explorer.exe', 'notepad.exe']
         self.grant_permission   = "/grant {}:F".format(get_usr_path)
         self.grant_processus    = ['cmd.exe', 'taskmgr.exe', 'smartscreen.exe']
-        self.directory_check    = ["{} \\Perflogs {}", "{} \\Perflogs\\* {}", "{} \\Perflogs\\gui_counter\\* {}", "{} \\Windows\\System {}"]
+        self.directory_check    = ["{} \\Perflogs {}", "{} \\Perflogs\\* {}", "{} \\Perflogs\\setup\\* {}", "{} \\Windows\\System {}"]
         self.processus_exec     = "START /MIN {}\\Windows\\System32\\icacls.exe".format(letter_drive_path)
         self.directory3         = "{}\\Windows\\System32\\WindowsPowerShell\\v1.0\\".format(letter_drive_path)
         self.directory2         = "{}\\Windows\\System32\\".format(letter_drive_path)
