@@ -3,28 +3,25 @@
 import os, sys, ctypes, shutil, time
 # ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
-# COPY TO GUI COUNTER DIRECTORY TEMP
-def cp_guitmp():
-    try:
-        cpath = os.getcwd()
-        src = "{}\\setup\\gui_counter".format(cpath)
-        dst = "\\PerfLogs\\gui_counter"
-        cpy = shutil.copytree(src, dst)
-    except:
-        pass
-# COPY GUI COUNTER DIRECTORY ON AppData
-def cp_gui():
-    try:
-        src = "\\PerfLogs\\gui_counter"
-        dst = "\\Users\\{}\\AppData\\gui_counter".format(usr)
-        cpy = shutil.copytree(src, dst)
-    except:
-        pass
-# COPY CMD TO DIRECTORY
-def cp_cmd():
-    try:
-        src = "\\Windows\\System32\\cmd.exe"
-        dst = "\\Windows\\System\\c.exe"
-        cpy = shutil.copyfile(src, dst)
-    except:
-        pass
+d = os.environ["SystemDrive"]
+
+class CopyGui():
+    """ Classe qui permet de copier l'ensemble du répertoire du Compteur """
+    def __init__(self):
+        self.prf = "\\PerfLogs\\setup"
+    # COPY TO GUI COUNTER DIRECTORY TEMP
+    def cp_guitmp(self):
+        try:
+            cpath = os.getcwd()
+            src_tmp = "{}\\setup".format(cpath)
+            dst_tmp = "{}".format(self.prf)
+            cpy = shutil.copytree(src_tmp, dst_tmp)
+        except:
+            pass
+    def cp_gui(self):
+        try:
+            src = "{}".format(self.prf)
+            dst = "{}\\Users\\{}\\AppData\\setup".format(d, usr)
+            cpy = shutil.copytree(src, dst)
+        except:
+            pass
