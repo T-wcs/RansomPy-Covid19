@@ -1,16 +1,17 @@
 #!/usr/bin/python
 #coding:utf-8
-
 from cryptography.fernet import Fernet
 import os
-
+# GET VARIABLE ENVIRONMENT
+drive = os.environ["SystemDrive"]
+# OPEN KEY FILE TO DECRYPT
 file = open(input("Enter your key file location : "),"rb")
 key = file.read()
 file.close()
 
 def filelist():
     mylist = []
-    spec = "c:/users/"
+    spec = "{}/users/".format(drive)
     for root, dirs, files in os.walk(spec):
         for file in files:
             if file.endswith(".covid-19"):
