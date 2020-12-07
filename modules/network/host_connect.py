@@ -1,7 +1,6 @@
 #!/usr/bin/python
 #coding:utf-8
-from cryptography.fernet import Fernet
-import os, sys, socket, wget, struct, ctypes, shutil, time, winreg
+import os, socket
 
 def keyrcv():
     try:
