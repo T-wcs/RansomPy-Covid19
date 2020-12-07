@@ -3,12 +3,10 @@
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from cryptography.fernet import Fernet
 import os, sys, socket, wget, struct, ctypes, shutil, base64
 # ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
-usrkey = "%s.key" %(usr)
+usrkey = "{}.key".format(usr)
 # GENERATE KEY FUNCTION
 def genkey(name):
     global key
