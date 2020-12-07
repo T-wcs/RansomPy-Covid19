@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #coding:utf-8
 from cryptography.fernet import Fernet
-import os, sys, socket, wget, struct, ctypes, shutil, base64
+import os
 # ENVIRONMENT VARIABLE
 usr = os.environ["USERNAME"]
 usrkey = "{}.key".format(usr)
