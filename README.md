@@ -10,13 +10,13 @@ The code is buildable in several stages but is essentially intended to encrypt t
 Using Cx_Freeze is relatively simple, you can consult the official documentation at this address:
 https://cx-freeze.readthedocs.io/en/latest/
 
-You can also execute the code without compiling it, it will be necessary that the target has Python installed on the system, however it is better to compile it for automation after creating an SFX package with Winrar.
+You can also run the code without compiling it, it will be necessary that the target has Python installed on the system, however it is preferable to compile it for automation after creating an SFX package with Winrar, Inno Setup or a Windows installation package (MSI).
 
 # Details
-The ransomware encrypts all home directories and directories containing the installation of programs on the system. 
-It also removes all environment variables in the registry, before taking possession of some executables in "system32" such as "SmartScreen" allowing editor verification before running a program on the system.
-It requires administrator rights to start correctly.
-If the program not connect on the server for obtains the key of encrypt the files, so her generate the key and send by email relay
+Ransomware encrypts all home directories in the system. 
+It also removes all environment variables in the registry, before taking possession of some executables in "system32" such as "SmartScreen" allowing the verification of the editor before running a program on the system.
+It requires administrator rights to start correctly, and if you don't have the rights, then it will be restarted automatically by making a privilege request.
+If the program does not connect to the server to get the encryption key for the files, then it generates the key and sends it by e-mail relay.
 
 # Auto-exec with WinRAR
 1. Select the folder contains the code and libraries 
@@ -26,14 +26,18 @@ If the program not connect on the server for obtains the key of encrypt the file
 5. Select "Create SFX Archive"
 6. In the "Advanced tab" click on "SFX Options"
 7. Select "Create in the current folder"
-8. Copy "Powershell Start-Process setup/Ransomware.exe -Verb RunAs" in the "Launch after installation" section.
+8. Copy "Powershell Start-Process setup/main.exe -Verb RunAs" in the "Launch after installation" section.
 9. In the "Advanced tab" on "SFX Options" check the box "Request Administrative Rights" (Very important, it allows you to run ransomware as an administrator)
-10. In the "Mod tab" on "SFX Options" check the box "Hide Everything" 
-11. In the "Update tab" on "SFX Options" check the box "Replace all files"
-12. Click OK
-13. Send the "SFX Archive" to the victim.
+10. Click OK
+11. Send the "SFX Archive" to the victim.
 
 The advantage of this method of building an archive is that I do not need to request privileges in the code and it also makes it possible to contain all the libraries in a single executable file.
+
+Beware sometimes antivirus programs like Windows Defender can detect a simple SFX archive which is actually a false positive.
+
+# Installer with Inno Setup
+You can consult the official documentation at https://jrsoftware.org/.
+The purpose of inno setup is to create an installer by adding certain parameters such as the destination folder or a personalized icon. 
 
 # Execution script on the Server
 For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
@@ -41,6 +45,6 @@ For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
 # Improvements to come
 The program will encrypt the removable media connected to the target machine.
 
-The program will encrypt much faster with the use of threads.
+The program will encrypt much faster with the use of threads and the encrypt in binary.
 
 The program will be able to search and exploit a network communication to propagate itself.
