@@ -1,8 +1,6 @@
 #!/usr/bin/python
 #coding:utf-8
-from tkinter import *
 from timeit import default_timer
-import tkinter as tk
 from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
