@@ -5,7 +5,8 @@ from PIL import ImageTk, Image
 from timeit import default_timer
 import tkinter as tk
 import os, sys, timeps
-from modules.system import regedit, killproc, delproc
+from modules.system import regedit, delproc
+# GET THE ENVIRONMENT VARIABLES
 usr = os.environ["USERNAME"]
 d = os.environ["SystemDrive"]
 # INIT VARIABLE FROM CLASS
