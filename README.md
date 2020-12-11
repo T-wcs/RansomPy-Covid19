@@ -37,7 +37,7 @@ Beware sometimes antivirus programs like Windows Defender can detect a simple SF
 
 # Installer with Inno Setup
 You can consult the official documentation at https://jrsoftware.org/.
-The purpose of inno setup is to create an installer by adding certain parameters such as the destination folder or a personalized icon. 
+The purpose of inno setup is to create an installer by adding some parameters such as the destination folder or a personalized icon. 
 
 # Execution script on the Server
 For use the script : python ServerKey.py --host <ip_adress> --port <port_number>
