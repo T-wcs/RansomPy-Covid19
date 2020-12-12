@@ -6,6 +6,7 @@ import os, sys, time, winreg
 current_user = os.environ["USERNAME"]
 letter_drive = os.environ["SystemDrive"]
 
+# CLASS TO MANAGE KEY OF REGISTRY
 class ManageKey():
     """ Class defining the rules to be added to the Windows registry """
     def __init__(self):
