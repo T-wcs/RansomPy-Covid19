@@ -6,7 +6,7 @@ letter_drive_path = os.environ["SystemDrive"]
 current_user      = os.environ["USERNAME"]
 
 class GetOwn():
-    """ Classe définissant les processus et répertoire à s'approprier """
+    """ Class defining the processes and directory to be appropriated """
     def __init__(self):
         self.processus_windir = ["explorer.exe", "notepad.exe"]
         self.processus_pshell = ["powershell.exe", "powershell_ise.exe"]
