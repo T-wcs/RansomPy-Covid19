@@ -6,7 +6,7 @@ letter_drive_path = os.environ["SystemDrive"]
 current_user      = os.environ["USERNAME"]
 
 class GetPermission():
-    """ Classe définissant les permissions de lecture, écriture sur les processus et répertoire"""
+    """ Class defining read, write permissions on processes and directories """
     def __init__(self):
         self.powershell_command = ['powershell.exe', 'powershell_ise.exe']
         self.windows_processus  = ['explorer.exe', 'notepad.exe']
