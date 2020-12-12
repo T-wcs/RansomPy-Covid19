@@ -26,8 +26,6 @@ It is also going to block access to windows defender and disable it from the reg
 The ransomware will also insert in the registry, the start of its main encryption function at each system reboot by calling an independent executable.
 In the event of a reboot, it generates a new key but it does not encrypt the files it has already encrypted previously, by logic and to save time.
 
-
-Translated with www.DeepL.com/Translator (free version)
 # Auto-exec with WinRAR
 1. Select the folder contains the code and libraries 
 2. Rename the folder to "setup"
