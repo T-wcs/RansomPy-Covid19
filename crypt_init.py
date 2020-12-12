@@ -19,7 +19,7 @@ def genkey(name):
     with open(usrkey, "wb") as file:
         file.write(key)
 
-# FILE ENCYPTING FUNCTION
+# FILE ENCRYPTING FUNCTION
 def file_encrypt(key, name):
     with open(name,'rb') as files:
         data = files.read()
