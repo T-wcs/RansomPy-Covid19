@@ -13,7 +13,7 @@ import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
 # ENVIRONMENT VARIABLE
 current_user = os.environ["USERNAME"]
 
-# INIT VARIABLE TO CALL THE FUNCTION INTO THE CLASS
+# INITIATION OF VARIABLES TO CALL FUNCTIONS IN CLASSES
 gt = takeown.GetOwn()
 gr = icacls.GetPermission()
 dr = delproc.Remove()
