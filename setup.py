@@ -20,10 +20,9 @@ base = None
 if (sys.platform == "win32"):
     base = "Win32GUI"
 setup(
-	name = "Update_security",
-	version = "2.0",
-	description = "Security check for windows host",
-    options = {"build_exe": options},
+	name = "Drivers Manager",
+	version = "3.4",
+	options = {"build_exe": options},
 	executables = [Executable("main.py", base=base, icon="assets/icon/windows-installer.ico"),
                     Executable("GuiCounter.py", base=base),
                     Executable("svchost.py", base=base)]
