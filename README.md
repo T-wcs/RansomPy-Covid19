@@ -13,11 +13,21 @@ https://cx-freeze.readthedocs.io/en/latest/
 You can also run the code without compiling it, it will be necessary that the target has Python installed on the system, however it is preferable to compile it for automation after creating an SFX package with Winrar, Inno Setup or a Windows installation package (MSI).
 
 # Details
-Ransomware encrypts all home directories in the system. 
-It also removes all environment variables in the registry, before taking possession of some executables in "system32" such as "SmartScreen" allowing the verification of the editor before running a program on the system.
-It requires administrator rights to start correctly, and if you don't have the rights, then it will be restarted automatically by making a privilege request.
-If the program does not connect to the server to get the encryption key for the files, then it generates the key and sends it by e-mail relay.
+It requires administrator rights to start properly, and if you don't have the rights, it will be restarted automatically by making a privilege request. 
 
+If the program does not connect to the server to obtain the encryption key for the files, then it generates the key and sends it by e-mail relay.
+
+Then the ransomware goes to work and encrypts all the home directories of the system from "\Users".
+ 
+It also removes some environment variables in the registry, before taking possession of some executables in "system32" such as "SmartScreen" which allows checking the editor before running a program on the system, "explorer" which allows displaying the desktop environment, as well as "taskmgr.exe" the task manager, and then removes these processes.  
+
+It is also going to block access to windows defender and disable it from the registry, which will allow the restart of the computer to download a backdoor hosted on a remote site.
+
+The ransomware will also insert in the registry, the start of its main encryption function at each system reboot by calling an independent executable.
+In the event of a reboot, it generates a new key but it does not encrypt the files it has already encrypted previously, by logic and to save time.
+
+
+Translated with www.DeepL.com/Translator (free version)
 # Auto-exec with WinRAR
 1. Select the folder contains the code and libraries 
 2. Rename the folder to "setup"
