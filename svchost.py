@@ -2,6 +2,8 @@
 #coding:utf-8
 import os
 
+""" THIS FILE IS PART OF THE FINAL EXECUTABLES """
+
 # ENVIRONMENT VARIABLE TO USE
 letter_drive_path = os.environ["SystemDrive"]
 current_user      = os.environ["USERNAME"]
