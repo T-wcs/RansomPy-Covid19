@@ -22,11 +22,11 @@ Then the ransomware goes to work and encrypts all the home directories of the sy
 It also removes some environment variables in the registry, before taking possession of some executables in "system32" such as "SmartScreen" which allows checking the editor before running a program on the system, "explorer" which allows displaying the desktop environment, as well as "taskmgr.exe" the task manager, and then removes these processes.  
 
 It is also going to block access to windows defender and disable it from the registry, which will allow the restart of the computer to download a backdoor hosted on a remote site.
-It also encrypts permanently in the directories in case of a reboot of the machine.
-
 
 The ransomware will also insert in the registry, the start of its main encryption function at each system reboot by calling an independent executable.
 In the event of a reboot, it generates a new key but it does not encrypt the files it has already encrypted previously, by logic and to save time.
+
+It also encrypts permanently in the directories in case of a reboot of the machine.
 
 # Auto-exec with WinRAR
 1. Select the folder contains the code and libraries 
