@@ -2,6 +2,7 @@
 #coding:utf-8
 import os, socket
 
+# FUNCTION TO CONNECT WITH THE SERVER TO OBTAINED THE KEY
 def keyrcv():
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
