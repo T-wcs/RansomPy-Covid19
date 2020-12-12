@@ -21,7 +21,7 @@ except:
     pass
 # INIT WINDOW FOR GUI COUNTER
 window = Tk()
-src = "\\Users\\{}\\AppData\\setup\\db.txt".format(usr)
+src = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\db.txt".format(d, usr)
 # FUNCTION TO SET A TIME
 def updateTime(generator):
     global p
@@ -81,7 +81,7 @@ except:
     with open(src, "w") as db:
         updateTime(timeps.set_time(12, 0, 0))
 try:
-    a = "{}\\Users\\{}\\AppData\\setup\\image.jpg".format(d, usr)
+    a = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\image.jpg".format(d, usr)
     # SET IMAGE INTO WINDOW
     img = ImageTk.PhotoImage(Image.open(a))
     panel = tk.Label(window, image = img)
