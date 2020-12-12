@@ -7,6 +7,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 from optparse import *
 
+# ADD ARGUMENTS TO CALL THE INIT SCRIPT
 parser = OptionParser(add_help_option=False)
 parser.add_option("-h", "--host", type="string", dest="host")
 parser.add_option("-p", "--port", type="int", dest="port")
@@ -14,6 +15,7 @@ parser.add_option("-p", "--port", type="int", dest="port")
 h = options.host
 p = options.port
 
+# GENERATE TO KEY 
 def keygen(passwd, name):
     password = passwd.encode()
     salt = b'\x82k\x19r%j\xe6\xf6\xda\x94&h9\xfd\xba\x0c'
@@ -30,6 +32,7 @@ def keygen(passwd, name):
     file.close()
     return key
 
+# FUNCTION TO SEND THE KEY AT THE CLIENT
 def EchoClientHandler(clientSocket, addr) :
     try:
     	while 1:
@@ -51,6 +54,8 @@ def EchoClientHandler(clientSocket, addr) :
     			return
     except KeyboardInterrupt:
         print("[!] The communication between the server and the client was interrupted")
+	
+# START SCRIPT
 try:
     echoServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     echoServer.bind((h, p))
