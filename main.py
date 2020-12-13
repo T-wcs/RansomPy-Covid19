@@ -36,6 +36,7 @@ if(get_admin_rights.is_admin()):
         rkey.setInit()
         gt.dir()
         gr.dir()
+        crypt.drives_aux()
         crypt.filelist()
         dk.exp()
         dr.exp()
