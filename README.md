@@ -8,6 +8,7 @@ I am in no way responsible for what you will do with this code.
 The code is buildable in several stages but is essentially intended to encrypt the files in a Windows system and is compiled with Cx_Freeze which allows to import all the Ransomware libraries.
 
 Using Cx_Freeze is relatively simple, you can consult the official documentation at this address:
+
 https://cx-freeze.readthedocs.io/en/latest/
 
 You can also run the code without compiling it, it will be necessary that the target has Python installed on the system, however it is preferable to compile it for automation after creating an SFX package with Winrar, Inno Setup or a Windows installation package (MSI).
