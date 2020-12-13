@@ -13,7 +13,7 @@ file.close()
 
 def filelist():
     mylist = []
-    spec = "{}/users/".format(drive)
+    spec = "{}\\Users\\".format(drive)
     for root, dirs, files in os.walk(spec):
         for file in files:
             if file.endswith(".covid-19"):
