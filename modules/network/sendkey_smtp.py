@@ -9,7 +9,7 @@ from email import encoders
 # GET THE ENVIRONMENT VARIABLES
 current_user = os.environ["USERNAME"]
 
-# SET THE DESTINATAIRE AND THE SENDER
+# SET DESTINATOR AND THE SENDER
 fromaddr = "FROM_TO@gmail.com"
 toaddr = "DEST_TO@gmail.com"
 
