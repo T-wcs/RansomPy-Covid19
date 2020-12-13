@@ -22,7 +22,6 @@ def filelist():
 print(filelist())
 
 def file_decrypt(key, files):
-
     for name in files:
         with open(name, 'rb') as f:
             data = f.read()
