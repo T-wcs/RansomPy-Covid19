@@ -1,7 +1,11 @@
 #!/usr/bin/python
 #coding:utf-8
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
 from cryptography.fernet import Fernet
-import os, sys, socket, wget, struct, ctypes, shutil, base64
+import os, sys, base64, smtplib
 
 """ THIS FILE IS PART OF THE FINAL EXECUTABLES """
 
