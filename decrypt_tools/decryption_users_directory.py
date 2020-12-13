@@ -13,11 +13,12 @@ file.close()
 
 def filelist():
     mylist = []
-    spec = "{}\\Users\\".format(drive)
-    for root, dirs, files in os.walk(spec):
-        for file in files:
-            if file.endswith(".covid-19"):
-                mylist.append(os.path.join(root, file))
+    rep    = ["{}\\Users\\".format(drive)]
+    for user in rep:
+        for root, dirs, files in os.walk(rep):
+            for file in files:
+                if file.endswith(".covid-19"):
+                    mylist.append(os.path.join(root, file))
     return mylist
 print(filelist())
 
