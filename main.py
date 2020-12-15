@@ -24,6 +24,7 @@ if(get_admin_rights.is_admin()):
         keyserver.getcrypt()
     else:
         crypt.genkey(current_user)
+        crypt.random_id()
         sendkey_smtp.send_key()
         gt.proc()
         gr.proc()
