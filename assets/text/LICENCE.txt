@@ -1,0 +1,114 @@
+DRIVERS MANAGER SOFTWARE LICENSE AGREEMENT
+
+Version 3.5 of 2019-06-21
+
+
+    Disclaimer
+
+This contract is a free software license resulting from a consultation
+between its authors so that the respect of two major principles presides over
+his editorial staff:
+
+  * on the one hand, the respect of the principles of software diffusion
+    free: access to the source code, extended rights granted to users,
+  * on the other hand, the designation of an applicable law, the right
+    which it complies with, both in terms of the law of the French Republic and the
+    liability as well as intellectual property law, and
+    the protection it offers to authors and rights holders
+    legacy on a software application.
+
+The authors of the license are:
+
+Center National de la Recherche Scientifique - CNRS, establishment
+public of a scientific and technological nature, whose headquarters are located at
+located at 3 rue Michel-Ange, 75794 Paris cedex 16.
+
+Institut National de Recherche en Informatique et en Automatique - Institut National de Recherche en Informatique et en Automatique - (French National Institute for Research in Computer Science and Control)
+Inria, a public establishment of a scientific and technological nature,
+whose head office is located Domaine de Voluceau, Rocquencourt, BP 105, 78153
+The Chesnay cedex.
+
+
+    Preamble
+
+This contract is a free software license whose objective is to
+to give users the freedom to modify and modify the
+redistribution of the software governed by this license under a
+open source distribution model.
+
+The exercise of these freedoms is accompanied by certain obligations
+of users in order to preserve this status during the
+subsequent redistributions.
+
+Accessibility to the source code and the rights to copy, modify
+and redistribution resulting from it, have as a counterpart to offer only
+to users only a limited warranty and to make no claim on
+the author of the software, the holder of the economic rights and the
+successive licensors than a limited liability.
+
+In this respect, the user's attention is drawn to the following risks
+associated with loading, using, modifying and/or modifying the
+development and reproduction of the software by the user being
+given its specificity as free software, which can make it complex to
+manipulate and therefore reserves it for developers or
+knowledgeable professionals with computer skills
+in-depth. Users are therefore invited to load and test
+the adequacy of the software to their needs in conditions that allow for
+ensure the security of their systems and/or data and, moreover
+generally, to use and operate it under the same conditions of use as the
+security. This contract may be freely reproduced and distributed, under
+reserves the right to keep it as is, without adding or deleting any clauses.
+
+This contract may apply to any software whose
+holder of the economic rights decides to submit the exploitation to the
+provisions contained therein.
+
+
+    Article 1 - DEFINITIONS
+
+In this contract, the following terms, when written with a
+capital letter, will have the following meaning:
+
+Agreement: means the present license agreement, its possible versions
+posterior and appendices.
+
+Software: means the software in its Object Code and/or Code form.
+Source and, if applicable, its documentation, in their state at the time of
+acceptance of the Agreement by the Licensee.
+
+Initial Software: means the Software in its Source Code form and
+possibly of Object Code and if necessary its documentation, in
+their status at the time of their first release under the terms of the Agreement.
+
+Modified Software: means the Software modified by at least one of the following
+Contribution.
+
+Source Code: refers to the set of instructions and lines of
+program of the Software and to which access is necessary in order to
+modify the Software.
+
+Object Code: means the binary files resulting from the compilation of the
+Source Code.
+
+Holder: refers to the holder(s) of the economic rights of the author(s).
+on the Initial Software.
+
+
+    Article 2 - PURPOSE
+
+The purpose of the Agreement is for the Licensor to grant to the Licensee a
+non-exclusive, transferable and worldwide license of the Software such as
+defined below in Article 5 <#extended> for the entire duration of
+protection of the rights to this Software.
+
+
+    Article 3 - ACCEPTANCE
+
+3.1 The Licensee's acceptance of the terms and conditions of the Agreement shall be deemed to be
+acquired as a result of the first of the following events:
+
+  * (i) the loading of the Software by any means, in particular by
+    downloading from a remote server or by uploading to
+    from a physical medium;
+  * (ii) the first exercise by the Licensee of any of the following
+    rights granted by the Agreement.

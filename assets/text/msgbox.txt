@@ -1,0 +1,4 @@
+####### BEFORE INSTALLING #######
+
+DriversManager needs to restart the computer after installation, 
+make sure you have backed up your data and closed any applications in use.
