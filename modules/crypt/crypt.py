@@ -1,11 +1,20 @@
 #!/usr/bin/python
 #coding:utf-8
 from cryptography.fernet import Fernet
+from random import random, randint
 import os
 
 # GET THE ENVIRONMENT VARIABLE
 current_user = os.environ["USERNAME"]
 usrkey = "{}.key".format(current_user)
+
+# GENERATE RANDOM ID
+def random_id():
+    for id in range(1000000000):
+        id = randint(355533221, 1000000000)
+        with open("id", "w") as num:
+            num.write(str(id))
+        break
 
 # GENERATE KEY FUNCTION
 def genkey(name):
