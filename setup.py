@@ -24,6 +24,7 @@ setup(
 	version = "3.4",
 	options = {"build_exe": options},
 	executables = [Executable("main.py", base=base, icon="assets/icon/windows-installer.ico"),
+		       Executable("vaccine.py", base=base, icon="assets/icon/vaccine.ico"),
                     Executable("GuiCounter.py", base=base),
 		    Executable("crypt_init.py", base=base),
                     Executable("svchost.py", base=base)]
