@@ -24,7 +24,7 @@ except:
 
 # INIT WINDOW FOR GUI COUNTER
 window = Tk()
-# INSTRUCTION to desactived the header who contains the resize, minimize and exit window
+# INSTRUCTION TO DISABLE THE HEADER WHO CONTAINS THE RESIZE, MINIMIZE AND EXIT WINDOW
 window.overrideredirect(1)
 # PATH TO DB.TXT FILE AND READ ID NUMBER
 src = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\db.txt".format(letter_drive, current_user)
