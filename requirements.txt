@@ -1,5 +1,6 @@
 cryptography
 wget
+Fernet
 thread
 winreg
 pillow
