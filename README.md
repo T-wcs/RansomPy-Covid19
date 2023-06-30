@@ -4,6 +4,8 @@ Ransowmare based on Python 3 [3.7.9 version] created during containment...
 The code is constantly improving, this for educational purposes to learn how a Ransomware works.
 I am in no way responsible for what you will do with this code.
 
+- - -
+
 # Program Operation 
 The code is buildable in several stages but is essentially intended to encrypt the files in a Windows system and is compiled with Cx_Freeze which allows to import all the Ransomware libraries.
 
